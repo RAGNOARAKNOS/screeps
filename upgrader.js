@@ -42,6 +42,10 @@ var roleUpgrader =
         }
       }
     }
+    else
+    {
+      console.log('P6');
+    }
   }
 };
 
