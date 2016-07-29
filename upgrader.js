@@ -21,6 +21,7 @@ var roleUpgrader =
     if (creep.memory.working == true)
     {
       console.log('P3');
+
       // try to upgrade the controller
       if (creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE)
       {
@@ -28,23 +29,19 @@ var roleUpgrader =
         creep.moveTo(creep.room.controller);
         console.log('P4');
       }
-      // if creep is supposed to harvest energy from source
-      else
-      {
-        // find closest source
-        var source = creep.pos.findClosestByPath(FIND_SOURCES);
-        // try to harvest energy, if the source is not in range
-        if (creep.harvest(source) == ERR_NOT_IN_RANGE)
-        {
-          console.log('P5');
-          // move towards the source
-          creep.moveTo(source);
-        }
-      }
     }
+    // if creep is supposed to harvest energy from source
     else
     {
-      console.log('P6');
+      // find closest source
+      var source = creep.pos.findClosestByPath(FIND_SOURCES);
+      // try to harvest energy, if the source is not in range
+      if (creep.harvest(source) == ERR_NOT_IN_RANGE)
+      {
+        console.log('P5');
+        // move towards the source
+        creep.moveTo(source);
+      }
     }
   }
 };
