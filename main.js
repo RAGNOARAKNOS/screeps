@@ -12,16 +12,21 @@ module.exports.loop = function ()
   /* Read the persistent memory and garbage collect all defunct creep data */
   for(var name in Memory.creeps)
   {
-    if(!Game.creeps[name]) 
+    if(!Game.creeps[name])
     {
       delete Memory.creeps[name];
       console.log('Clearing non-existing creep memory:', name);
     }
   }
 
-  /* Get all harvesters */
+  /* Get all harvesters, maintain the population */
   var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
   console.log('Harvesters: ' + harvesters.length);
+
+  // Get all builders
+
+  // Get all upgraders
+
 
   if(harvesters.length < 2)
   {
