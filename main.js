@@ -41,8 +41,7 @@ module.exports.loop = function ()
     var newName = Game.spawns['Spawn1'].createCreep([WORK, CARRY, CARRY, MOVE], undefined, {role: 'upgrader', working: false});
     console.log('Spawning new upgrader: ' + newName);
   }
-
-
+  
   /* The role based loop  */
   for(var name in Game.creeps)
   {
