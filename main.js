@@ -3,12 +3,33 @@ var roleHarvester = require('harvester');
 
 module.exports.loop = function ()
 {
-
+  /* Get the overall energy availability for the rooms */
   for(var name in Game.rooms)
   {
     console.log('Room "'+name+'" has '+Game.rooms[name].energyAvailable+' energy');
   }
 
+  /* Read the persistent memory and garbage collect all defunct creep data */
+  for(var name in Memory.creeps)
+  {
+    if(!Game.creeps[name]) 
+    {
+      delete Memory.creeps[name];
+      console.log('Clearing non-existing creep memory:', name);
+    }
+  }
+
+  /* Get all harvesters */
+  var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
+  console.log('Harvesters: ' + harvesters.length);
+
+  if(harvesters.length < 2)
+  {
+    var newName = Game.spawns['Spawn1'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'harvester'});
+    console.log('Spawning new harvester: ' + newName);
+  }
+
+  /* The role based loop  */
   for(var name in Game.creeps)
   {
     var creep = Game.creeps[name];
