@@ -32,7 +32,7 @@ module.exports.loop = function ()
 
   // Get all builders
   var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
-  console.log('Builders: ' + upgraders.length);
+  console.log('Builders: ' + builders.length);
 
   if(builders.length < 1)
   {
