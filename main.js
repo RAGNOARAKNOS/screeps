@@ -34,7 +34,7 @@ module.exports.loop = function ()
 
   // Get all upgraders
   var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
-  console.log('Harvesters: ' + upgraders.length);
+  console.log('Upgraders: ' + upgraders.length);
 
   if(upgraders.length < 2)
   {
@@ -52,7 +52,7 @@ module.exports.loop = function ()
     {
       roleHarvester.run(creep);
     }
-    
+
     if(creep.memory.role == 'builder')
     {
       roleBuilder.run(creep);
@@ -60,7 +60,7 @@ module.exports.loop = function ()
 
     if (creep.memory.role == 'upgrader')
     {
-      roleBuilder.run(creep);
+      roleUpgrader.run(creep);
     }
   }
 }
